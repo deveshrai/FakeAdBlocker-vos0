@@ -8,10 +8,20 @@
 import SwiftUI
 
 @main
-struct FakeAdBlocker_vos0App: App {
+@MainActor
+struct Day34App: App {
+
+    @State private var model = ImageTrackingModel()
+
     var body: some Scene {
         WindowGroup {
             ContentView()
+        }
+        .defaultSize(width: 400, height: 400)
+
+        ImmersiveSpace(id: "ImmersiveSpace") {
+            ImmersiveView()
+                .environment(model)
         }
     }
 }
